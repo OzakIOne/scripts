@@ -20,3 +20,7 @@
   <summary>res</summary>
   <span>quickly output common resolution</span>
 </details>
+<details>
+  <summary>subfolderup</summary>
+  <span>Move up each files in sub folder</span>
+</details>
