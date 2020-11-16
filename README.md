@@ -24,3 +24,7 @@
   <summary>subfolderup</summary>
   <span>Move up each files in sub folder</span>
 </details>
+<details>
+  <summary>tallcus</summary>
+  <span>transcode all/specified videos with custom parameters</span>
+</details>
