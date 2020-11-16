@@ -36,3 +36,7 @@
   <summary>tallimg</summary>
   <span>transcode all/specified image to webp images with custom preset</span>
 </details>
+<details>
+  <summary>twitter</summary>
+  <span>transcode specified video with libx264(crf) and aac because twitter only accepts these codecs and also needs a file under 15MB (thats why crf is here)</span>
+</details>
