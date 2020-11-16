@@ -1,0 +1,22 @@
+#!/bin/bash
+
+allVideos=()
+if [ "$1" = "all" ] && ([ "$2" = "mkv" ] || [ "$2" = "mp4" ])
+    then
+		for i in *."$2"
+		do
+			allVideos+=("$i")
+		done
+
+		# adding a ! return the list of all array indices
+		for x in ${!allVideos[@]}
+		do
+			ffmpeg.exe -hwaccel auto -i "${allVideos[$x]}" -map 0 -c copy -c:v hevc_nvenc -preset slow -rc-lookahead 40 -qp:v "$3" "${allVideos[$x]%.*}"_"$3"qp_hevc.mkv
+			# echo "${allVideos[$x]%.*}" # %.* removes filename extension
+		done
+elif [ "$1" = "help" ] || [ "$1" = "h" ] || [ -z "$1" ]
+	then
+	echo -e "Param list :\n1:[file] [qp value (0-51)] \n2:[all] [mkv / mp4]"
+else
+	ffmpeg.exe -hwaccel auto -i "$1" -map 0 -c copy -c:v hevc_nvenc -preset slow -rc-lookahead 40 -qp:v "$2" "${1%.*}"_"$2"qp_hevc.mkv
+fi

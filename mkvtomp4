@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for i in *.mkv
+do
+	ffmpeg -i "$i" -map 0 -c copy "$i"_trans.mp4
+done

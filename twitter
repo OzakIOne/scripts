@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+    then echo -e "Param list :\n1:[file] \n2:[crf value (0-51)]"
+else
+    ffmpeg.exe -hwaccel cuda -i "$1" -c:a aac -c:v libx264 -preset medium -crf "$2" "${1%.*}"_crf_"$2".mp4
+fi
