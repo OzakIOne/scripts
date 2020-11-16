@@ -32,3 +32,7 @@
   <summary>tallhevc</summary>
   <span>transcode all/specified videos with preselected hevc_nvenc video encoder parameters (audio isn't transcoded)</span>
 </details>
+<details>
+  <summary>tallimg</summary>
+  <span>transcode all/specified image to webp images with custom preset</span>
+</details>
