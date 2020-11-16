@@ -12,3 +12,7 @@
   <summary>makegif</summary>
   <span>create a gif from a video w/ ffmpeg, also gifski integration if you want better quality</span>
 </details>
+<details>
+  <summary>mkvtomp4</summary>
+  <span>bulk remux (same as obs remux)</span>
+</details>
