@@ -28,3 +28,7 @@
   <summary>tallcus</summary>
   <span>transcode all/specified videos with custom parameters</span>
 </details>
+<details>
+  <summary>tallhevc</summary>
+  <span>transcode all/specified videos with preselected hevc_nvenc video encoder parameters (audio isn't transcoded)</span>
+</details>
