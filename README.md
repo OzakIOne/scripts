@@ -16,3 +16,7 @@
   <summary>mkvtomp4</summary>
   <span>bulk remux (same as obs remux)</span>
 </details>
+<details>
+  <summary>res</summary>
+  <span>quickly output common resolution</span>
+</details>
