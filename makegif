@@ -13,10 +13,10 @@ elif [ "$1" = gifski ]
     mkdir tmpframe/
     cd tmpframe/
     ffmpeg.exe -i ../"$2" frame%04d.png
-    gifski.exe -o "${2%.*}_gifski".gif frame*.png
+    gifski.exe --fps "$3" --width "$4" -o "${2%.*}_gifski".gif frame*.png
     mv "${2%.*}_gifski".gif ../
     rm -r ../tmpframe/
 elif [ -z "$1" ] || [ "$1" = "h" ]
     then
-    echo "Param list :\n[gif / gifski]\ngif: 2:input 3:fps 4:width 5:height\ngifski: 2:input"
+    echo "Param list :\n[gif / gifski]\ngif: 2:input 3:fps 4:width 5:height\ngifski: 2:input 3:fps"
 fi
