@@ -2,7 +2,7 @@
 
 if [ -z "$1" ]
 then
-  echo "ffm [file] [audio codec (aac/copy)] [video codec (libx264/copy)] [file extension]"
+  printf "ffm [file] [audio codec (aac/copy)] [video codec (libx264/copy)] [file extension]"
 else
   ffmpeg.exe -hwaccel auto -i "$1" -map 0 -c:a "$2" -c:v "$3" -preset fast "${1%.*}"_ta."$4"
 fi

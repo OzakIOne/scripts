@@ -1,5 +1,5 @@
 #!/bin/bash
 
 for d in */ ; do
-  cd "$d" && mv * .. && cd ..
+  cd "$d" && mv ./* .. && cd ..
 done

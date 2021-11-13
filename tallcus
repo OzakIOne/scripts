@@ -9,14 +9,14 @@ if [ "$1" = "all" ] # && ([ "$2" = "mkv" ] || [ "$2" = "mp4" ])
   done
 
   # adding a ! return the list of all array indices
-  for x in ${!allVideos[@]}
+  for x in "${!allVideos[@]}"
   do
-    ffmpeg.exe -hwaccel auto -i "${allVideos[$x]}" -map 0 -c:a "$3" -c:v "$4" -crf "$5" -rc-lookahead 40 "${allVideos[$x]%.*}_crf$5"."$6"
-    # echo "${allVideos[$x]%.*}" # %.* removes filename extension
+    ffmpeg.exe -hwaccel auto -i "${allVideos[$x]}" -map 0 -c:a "$3" -c:v "$4" -crf "$5" -rc-lookahead 40 "${allVideos[$x]%.*}_crf$5.$6"
+    # printf "${allVideos[$x]%.*}" # %.* removes filename extension
   done
 elif [ "$1" = "help" ] || [ "$1" = "h" ] || [ -z "$1" ]
   then
-  echo -e "Param list :\n1:[file] [audio codec] [video codec (add crf or qp)] \n2:[all] [file extension] [audio codec] [video codec (add crf or qp)]"
+  printf "Param list :\\n1:[file] [audio codec] [video codec (add crf or qp)] \\n2:[all] [file extension] [audio codec] [video codec (add crf or qp)]"
 else
-  ffmpeg.exe -hwaccel auto -i "$1" -map 0 -c:a "$2" -c:v "$3" -rc-lookahead 40 "$2" "${1%.*}"_"$2"qp_hevc.mkv
+  ffmpeg.exe -hwaccel auto -i "$1" -map 0 -c:a "$2" -c:v "$3" -rc-lookahead 40 "$2" "${1%.*}_${2}qp_hevc.mkv"
 fi
