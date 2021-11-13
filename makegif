@@ -1,22 +1,22 @@
 #!/bin/sh
 
 if [ "$1" = gif ]
-    then
-    palette="./palette.png"
-    filters="fps=$3,scale=$4:$5:flags=lanczos"
-    #ffmpeg -h filter=scale
-    ffmpeg.exe -v warning -i "$2" -vf "$filters,palettegen" -y $palette
-    ffmpeg.exe -v warning -i "$2" -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$2_gif".gif
-    rm ./palette.png
+  then
+  palette="./palette.png"
+  filters="fps=$3,scale=$4:$5:flags=lanczos"
+  #ffmpeg -h filter=scale
+  ffmpeg.exe -v warning -i "$2" -vf "$filters,palettegen" -y $palette
+  ffmpeg.exe -v warning -i "$2" -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$2_gif".gif
+  rm ./palette.png
 elif [ "$1" = gifski ]
-    then
-    mkdir tmpframe/
-    cd tmpframe/
-    ffmpeg.exe -i ../"$2" frame%04d.png
-    gifski.exe --fps "$3" --width "$4" -o "${2%.*}_gifski".gif frame*.png
-    mv "${2%.*}_gifski".gif ../
-    rm -r ../tmpframe/
+  then
+  mkdir tmpframe/
+  cd tmpframe/
+  ffmpeg.exe -i ../"$2" frame%04d.png
+  gifski.exe --fps "$3" --width "$4" -o "${2%.*}_gifski".gif frame*.png
+  mv "${2%.*}_gifski".gif ../
+  rm -r ../tmpframe/
 elif [ -z "$1" ] || [ "$1" = "h" ]
-    then
-    echo "Param list :\n[gif / gifski]\ngif: 2:input 3:fps 4:width 5:height\ngifski: 2:input 3:fps"
+  then
+  echo "Param list :\n[gif / gifski]\ngif: 2:input 3:fps 4:width 5:height\ngifski: 2:input 3:fps"
 fi

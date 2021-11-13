@@ -2,21 +2,21 @@
 
 allImages=()
 if [ "$1" = "all" ] && ([ "$2" = "png" ] || [ "$2" = "jpg" ] || [ "$2" = "jpeg" ])
-    then
-		for i in *."$2"
-		do
-			allImages+=("$i")
-		done
+  then
+  for i in *."$2"
+  do
+    allImages+=("$i")
+  done
 
-		# adding a ! return the list of all array indices
-		for x in ${!allImages[@]}
-		do
-			ffmpeg.exe -hwaccel auto -i "${allImages[$x]}" -quality "$3" -preset "$4" "${allImages[$x]%.*}".webp
-			# echo "${allImages[$x]%.*}" # %.* removes filename extension
-		done
+  # adding a ! return the list of all array indices
+  for x in ${!allImages[@]}
+  do
+    ffmpeg.exe -hwaccel auto -i "${allImages[$x]}" -quality "$3" -preset "$4" "${allImages[$x]%.*}".webp
+    # echo "${allImages[$x]%.*}" # %.* removes filename extension
+  done
 elif [ "$1" = "help" ] || [ "$1" = "h" ] || [ -z "$1" ]
-	then
-	echo -e "Param list :\n1:[file] [quality (0-100)] [preset (none/default/picture/photo/drawing/icon/text)]\n2:[all] [png/jpg/jpeg] [quality] [preset]"
+  then
+  echo -e "Param list :\n1:[file] [quality (0-100)] [preset (none/default/picture/photo/drawing/icon/text)]\n2:[all] [png/jpg/jpeg] [quality] [preset]"
 else
-	ffmpeg.exe -hwaccel auto -i "$1" -quality "$2" -preset "$3" "${1%.*}".webp
+  ffmpeg.exe -hwaccel auto -i "$1" -quality "$2" -preset "$3" "${1%.*}".webp
 fi
